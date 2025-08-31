@@ -164,7 +164,8 @@ function TravelRegulationCreation({ onNavigate }: TravelRegulationCreationProps)
   };
 
   const generateDocument = (format: 'word' | 'pdf') => {
-    alert(`${format.toUpperCase()}ファイルを生成中...`);
+    console.log(`Generate ${format}:`, data);
+    alert(`${format.toUpperCase()}ファイルを生成しました（デモ版のため実際のファイル生成は行われません）`);
   };
 
   return (

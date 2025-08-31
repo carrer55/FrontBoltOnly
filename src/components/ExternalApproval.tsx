@@ -38,7 +38,8 @@ function ExternalApproval({ applicationId, onComplete }: ExternalApprovalProps) 
 
     setIsSubmitting(true);
     
-    // 実際の実装では、ここでAPIを呼び出す
+    // ローカル実装では、申請ステータスを更新
+    console.log('Approval action:', { action, comment, applicationId });
     setTimeout(() => {
       onComplete(action, comment);
       setIsSubmitting(false);

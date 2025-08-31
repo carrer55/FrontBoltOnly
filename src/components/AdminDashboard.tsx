@@ -145,9 +145,9 @@ function AdminDashboard({ onNavigate }: AdminDashboardProps) {
       '承認者': app.approver
     }));
     
-    // 実際の実装では、CSVファイルを生成してダウンロード
+    // ローカル実装では、CSVデータをコンソールに出力
     console.log('CSV Export:', csvData);
-    alert('CSVファイルをダウンロードしました');
+    alert('CSVデータが生成されました（デモ版のため実際のダウンロードは行われません）');
   };
 
   // 統計データの計算

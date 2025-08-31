@@ -99,8 +99,19 @@ function BusinessTripApplication({ onNavigate }: BusinessTripApplicationProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // ここで申請データを送信
+    // ローカルストレージに申請データを保存
     console.log('出張申請データ:', formData);
+    const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+    const newApplication = {
+      id: `BT-${Date.now()}`,
+      type: 'business-trip',
+      title: `${formData.destination}出張申請`,
+      ...formData,
+      submittedDate: new Date().toISOString().split('T')[0],
+      status: 'pending'
+    };
+    applications.push(newApplication);
+    localStorage.setItem('applications', JSON.stringify(applications));
     alert('出張申請が送信されました！');
     onNavigate('dashboard');
   };

@@ -25,14 +25,17 @@ function DocumentPreview({ onNavigate, documentId }: DocumentPreviewProps) {
   };
 
   const handlePrint = () => {
-    window.print();
+    console.log('Print document:', documentId);
+    alert('印刷機能が実行されました（デモ版のため実際の印刷は行われません）');
   };
 
   const handleDownload = () => {
-    alert('ダウンロード中...');
+    console.log('Download document:', documentId);
+    alert('ダウンロードしました（デモ版のため実際のファイル生成は行われません）');
   };
 
   const handleShare = () => {
+    console.log('Share document:', documentId);
     alert('共有リンクをクリップボードにコピーしました');
   };
 

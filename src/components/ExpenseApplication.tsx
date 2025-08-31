@@ -89,7 +89,20 @@ function ExpenseApplication({ onNavigate }: ExpenseApplicationProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    // ローカルストレージに申請データを保存
     console.log('経費申請データ:', expenses);
+    const applications = JSON.parse(localStorage.getItem('applications') || '[]');
+    const newApplication = {
+      id: `EX-${Date.now()}`,
+      type: 'expense',
+      title: '経費申請',
+      items: expenses,
+      totalAmount: totalAmount,
+      submittedDate: new Date().toISOString().split('T')[0],
+      status: 'pending'
+    };
+    applications.push(newApplication);
+    localStorage.setItem('applications', JSON.stringify(applications));
     alert('経費申請が送信されました！');
     onNavigate('dashboard');
   };

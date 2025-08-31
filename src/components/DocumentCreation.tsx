@@ -78,17 +78,42 @@ function DocumentCreation({ onNavigate, documentType }: DocumentCreationProps) {
   };
 
   const handleSave = () => {
+    // ローカルストレージに書類データを保存
+    const documents = JSON.parse(localStorage.getItem('documents') || '[]');
+    const newDocument = {
+      id: Date.now().toString(),
+      type: documentType,
+      title: getDocumentTitle(),
+      status: 'draft',
+      createdAt: new Date().toISOString(),
+      data: documentType === 'business-report' ? businessReportData : allowanceDetailData
+    };
+    documents.push(newDocument);
+    localStorage.setItem('documents', JSON.stringify(documents));
     alert('書類が保存されました！');
     onNavigate('document-management');
   };
 
   const handleSubmit = () => {
+    // ローカルストレージに書類データを保存（提出済みステータス）
+    const documents = JSON.parse(localStorage.getItem('documents') || '[]');
+    const newDocument = {
+      id: Date.now().toString(),
+      type: documentType,
+      title: getDocumentTitle(),
+      status: 'submitted',
+      createdAt: new Date().toISOString(),
+      data: documentType === 'business-report' ? businessReportData : allowanceDetailData
+    };
+    documents.push(newDocument);
+    localStorage.setItem('documents', JSON.stringify(documents));
     alert('書類が提出されました！');
     onNavigate('document-management');
   };
 
   const handleExport = (format: 'word' | 'pdf') => {
-    alert(`${format.toUpperCase()}形式でエクスポート中...`);
+    console.log(`Export ${format}:`, documentType === 'business-report' ? businessReportData : allowanceDetailData);
+    alert(`${format.toUpperCase()}形式でエクスポートしました（デモ版のため実際のファイル生成は行われません）`);
   };
 
   const renderBusinessReportForm = () => (

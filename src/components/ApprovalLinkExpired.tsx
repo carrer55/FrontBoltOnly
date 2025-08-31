@@ -8,11 +8,13 @@ interface ApprovalLinkExpiredProps {
 
 function ApprovalLinkExpired({ applicationId = 'BT-2024-001', expiredAt = '2024-07-20T18:00:00Z' }: ApprovalLinkExpiredProps) {
   const handleRequestNewLink = () => {
-    alert('新しい承認リンクの発行を申請者に依頼しました。');
+    console.log('Request new approval link for:', applicationId);
+    alert('新しい承認リンクの発行を申請者に依頼しました（デモ版のため実際の送信は行われません）');
   };
 
   const handleContactSupport = () => {
-    window.open('mailto:support@kenjano-seisan.com?subject=承認リンク期限切れについて&body=申請ID: ' + applicationId, '_blank');
+    console.log('Contact support for:', applicationId);
+    alert('サポートへの問い合わせが送信されました（デモ版のため実際の送信は行われません）');
   };
 
   return (

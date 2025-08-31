@@ -93,7 +93,7 @@ function ApprovalReminderSettings({ onNavigate }: ApprovalReminderSettingsProps)
   };
 
   const handleSave = () => {
-    // 設定を保存
+    // ローカルストレージに設定を保存
     localStorage.setItem('approvalReminderRules', JSON.stringify(reminderRules));
     localStorage.setItem('approvalReminderGlobalSettings', JSON.stringify(globalSettings));
     alert('リマインド設定を保存しました');

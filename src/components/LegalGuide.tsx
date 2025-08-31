@@ -232,6 +232,11 @@ function LegalGuide({ onNavigate }: LegalGuideProps) {
                         href={item.url}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          console.log('External link clicked:', item.url);
+                          alert('外部リンクが開かれます（デモ版では実際のリンクは開きません）');
+                        }}
                         className="flex items-center space-x-2 px-4 py-2 bg-gradient-to-r from-navy-600 to-navy-800 text-white rounded-lg font-medium hover:from-navy-700 hover:to-navy-900 transition-all duration-200 ml-4"
                       >
                         <ExternalLink className="w-4 h-4" />
