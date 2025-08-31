@@ -45,11 +45,22 @@ export function useAuth() {
   };
 
   const updateProfile = async (updates: Partial<User>) => {
-    // ローカル実装では、現在のユーザー情報を更新
     const currentUser = auth.getCurrentUser();
     if (currentUser) {
       const updatedUser = { ...currentUser, ...updates };
       localStorage.setItem('currentUser', JSON.stringify(updatedUser));
+      
+      // ユーザープロフィールも更新
+      const currentProfile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+      const updatedProfile = {
+        ...currentProfile,
+        full_name: updates.name || currentProfile.full_name,
+        company: updates.company || currentProfile.company,
+        position: updates.position || currentProfile.position,
+        phone: updates.phone || currentProfile.phone
+      };
+      localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+      
       return { success: true, data: updatedUser };
     }
     return { success: false, error: 'ユーザーが見つかりません' };

@@ -79,6 +79,16 @@ class LocalAuth {
         phone: '090-0000-0000'
       };
 
+      // デモモードフラグを設定
+      localStorage.setItem('demoMode', 'true');
+      localStorage.setItem('userProfile', JSON.stringify({
+        full_name: 'デモユーザー',
+        position: '代表取締役',
+        company: '株式会社デモ',
+        role: 'admin',
+        currentPlan: 'Pro'
+      }));
+
       this.authState = {
         user: demoUser,
         isAuthenticated: true

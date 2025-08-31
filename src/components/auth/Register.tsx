@@ -46,6 +46,14 @@ function Register({ onNavigate }: RegisterProps) {
     });
 
     if (result.success) {
+      // 登録成功時にユーザープロフィールを保存
+      localStorage.setItem('userProfile', JSON.stringify({
+        full_name: formData.name,
+        position: formData.position,
+        company: formData.company,
+        role: 'user',
+        currentPlan: 'Free'
+      }));
       onNavigate('register-success');
     } else {
       setError(result.error || '登録に失敗しました');

@@ -113,7 +113,8 @@ function Help({ onNavigate }: HelpProps) {
 
   const handleContactSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    alert('お問い合わせを送信しました。2営業日以内にご返信いたします。');
+    console.log('Contact form submitted:', contactForm);
+    alert('お問い合わせフォームが送信されました（デモ版のため実際の送信は行われません）');
     setContactForm({ name: '', email: '', subject: '', message: '' });
     setShowContactForm(false);
   };

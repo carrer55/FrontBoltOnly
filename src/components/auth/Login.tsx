@@ -62,6 +62,9 @@ function Login({ onNavigate, onLoginSuccess }: LoginProps) {
                   メールアドレス: <code className="bg-blue-100 px-1 rounded">demo</code><br />
                   パスワード: <code className="bg-blue-100 px-1 rounded">pass9981</code>
                 </p>
+                <p className="text-blue-600 text-xs">
+                  ※ すべてのデータはブラウザのローカルストレージに保存されます
+                </p>
               </div>
 
               <div>

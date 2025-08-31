@@ -35,6 +35,14 @@ function Onboarding({ onNavigate, onComplete }: OnboardingProps) {
     });
 
     if (result.success) {
+      // オンボーディング完了時にユーザープロフィールを保存
+      localStorage.setItem('userProfile', JSON.stringify({
+        full_name: formData.fullName,
+        position: formData.position,
+        company: formData.companyName,
+        role: 'user',
+        currentPlan: 'Free'
+      }));
       onComplete();
     } else {
       setError(result.error || '更新に失敗しました');

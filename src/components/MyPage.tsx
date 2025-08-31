@@ -110,6 +110,23 @@ function MyPage({ onNavigate }: MyPageProps) {
     setShowPasswordModal(true);
   };
 
+  const handleAllowanceSave = () => {
+    localStorage.setItem('allowanceSettings', JSON.stringify(allowanceSettings));
+    // ユーザープロフィールも更新
+    const currentProfile = JSON.parse(localStorage.getItem('userProfile') || '{}');
+    const updatedProfile = {
+      ...currentProfile,
+      allowances: {
+        domestic: allowanceSettings.domestic.dailyAllowance,
+        overseas: allowanceSettings.overseas.dailyAllowance,
+        transportation: allowanceSettings.domestic.transportation,
+        accommodation: allowanceSettings.domestic.accommodation
+      }
+    };
+    localStorage.setItem('userProfile', JSON.stringify(updatedProfile));
+    alert('日当設定が更新されました');
+  };
+
   const handleNotificationSave = () => {
     localStorage.setItem('notificationSettings', JSON.stringify(notificationSettings));
     alert('通知設定が更新されました');
@@ -229,7 +246,7 @@ function MyPage({ onNavigate }: MyPageProps) {
 
       <div className="flex justify-end">
         <button
-          onClick={handleProfileSave}
+          onClick={handleAllowanceSave}
           className="flex items-center space-x-2 px-6 py-3 bg-gradient-to-r from-navy-700 to-navy-900 hover:from-navy-800 hover:to-navy-950 text-white rounded-lg font-medium shadow-xl hover:shadow-2xl transition-all duration-200 transform hover:scale-105"
         >
           <Save className="w-5 h-5" />
