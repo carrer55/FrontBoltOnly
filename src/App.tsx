@@ -1,14 +1,4 @@
-import React from 'react';
-import AuthWrapper from './components/AuthWrapper';
-import { UserProfileProvider } from './components/UserProfileProvider';
-import './index.css';
-
-function App() {
-  return (
-    <UserProfileProvider>
-      <AuthWrapper />
-    </UserProfileProvider>
-  );
+// This file is no longer needed - functionality moved to main.tsx
+export default function App() {
+  return null;
 }
-
-export default App;
