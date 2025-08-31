@@ -84,6 +84,18 @@ function MyPage({ onNavigate }: MyPageProps) {
     }
   });
 
+  useEffect(() => {
+    // 保存された日当設定を読み込み
+    const savedAllowanceSettings = localStorage.getItem('allowanceSettings');
+    if (savedAllowanceSettings) {
+      try {
+        setAllowanceSettings(JSON.parse(savedAllowanceSettings));
+      } catch (error) {
+        console.error('Failed to load allowance settings:', error);
+      }
+    }
+  }, []);
+
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
